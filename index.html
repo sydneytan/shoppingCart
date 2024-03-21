@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+        .menu-checked {
+            @apply bg-white text-black font-semibold border-l-4 border-sky-600 border-solid;
+        }
+        .cartItem{
+            @apply bg-gray-700 rounded-full p-2 fixed rounded-full border-4 border-gray-700 border-solid z-20 bottom-2.5 left-2 ;
+        }
+        .cartItem span{
+            @apply hidden;
+        }
+        .addToCart{
+            @apply bg-blue-600;
+        }
+        .addToCart span{
+            @apply block absolute right-0 top-0 min-w-4 min-h-4 rounded-full bg-red-600 text-white text-xs text-center;
+        }
+        .payItem{
+            @apply min-w-36 text-center bg-gray-600 h-full py-3;
+        }
+        .payItem a{
+            @apply hidden;
+        }
+        .payItem span{
+            @apply block;
+        }
+        .goCheck{
+            @apply bg-green-400;
+        }
+        .goCheck a{
+            @apply block;
+        }
+        .goCheck span{
+            @apply hidden;
+        }
+        
+        .goodItem{
+            @apply flex items-center py-2 mb-3;
+        }
+        .goods-btn{
+            @apply flex items-center;
+        }
+        .goods-btn i{
+            @apply block size-6 rounded-full not-italic font-bold text-center leading-5;
+            
+        }
+        .goods-btn span{
+            @apply mx-4 text-gray-800 text-center hidden;
+        }
+        .goods-btn i.increaseBtn{
+            @apply bg-blue-600 text-white;
+        }
+        .goods-btn i.decreaseBtn{
+            @apply text-gray-400 border-gray-400 border border-solid hidden;
+        }
+        .active .goods-btn span{
+            @apply block;
+        }
+        .active .goods-btn i.decreaseBtn{
+            @apply block;
+        }
+        @keyframes cart-animation{
+            0%{
+                transform: scale(1);
+            }
+            25%{
+                transform: scale(0.8);
+            }
+            50%{
+                transform: scale(1.1);
+            }
+            75%{
+                transform: scale(0.9);
+            }
+            100%{
+                transform: scale(1);
+            }
+        }
+        .animate{
+            animation: cart-animation 500ms ease-in-out;
+        }
+        .add-to-cart{
+            @apply fixed text-white text-xl text-center z-10 left-0 top-0 leading-5 duration-500 ease-linear;
+            transition: 0.4s linear;
+        }
+        .add-to-cart span{
+            @apply block size-6 rounded-full bg-blue-600 duration-500 ease-[cubic-bezier(0.5,-0.5,1,1)];
+            
+        }
+      </style>
+</head>
+<body>
+    <div class="relative" id="container">
+
+        <div id="leftMenu" class="fixed top-0 left-0 bottom-0 bg-gray-100">
+            <ul class="list-none max-w-24 text-center text-slate-600">
+                <li class="p-4 menu-checked">推荐</li>
+                <li class="p-4">热销</li>
+                <li class="p-4">折扣</li>
+                <li class="p-4">夏日冰咖必喝榜</li>
+                <li class="p-4">进店必喝</li>
+                <li class="p-4">只喝美式</li>
+                <li class="p-4">酷爽特调水果冰萃</li>
+                <li class="p-4">经典奶咖</li>
+                <li class="p-4">创意奶咖</li>
+                <li class="p-4">瑞纳冰季</li>
+                <li class="p-4">不喝咖啡</li>
+            </ul>
+        </div>
+
+        <div class="pl-24 pr-2" id="goodList">
+            <!-- JS 加载数据 -->
+        </div>
+        <div class="cartItem" id="footerCart">
+            <img class="size-8" src="./assets/fa-shopping-cart.png">
+            <span>0</span>
+        </div>
+
+        <div class="fixed bottom-0 left-0 right-0 bg-gray-700 flex text-white justify-between items-center " id="checkFooter">
+            <div class="pl-20">
+                <h2 id="total">¥ 0.0</h2>
+                <span class="text-xs" id="deliFee">配送费¥0</span>
+            </div>
+            <div class="payItem" id="payStatus">
+                <a >去结算</a>
+                <span>还差 0 元起送</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- <div class="add-to-cart">+</div> -->
+    <script src="./js/data.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+</html>
